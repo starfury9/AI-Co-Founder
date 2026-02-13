@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base styles ─────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gray-950 text-gray-100 antialiased;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* ── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* ── Gradient text ───────────────────────────────────── */
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #4285f4, #a855f7, #ec4899);
+}
+
+/* ── Shimmer loading ─────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ── Glow effects ────────────────────────────────────── */
+.glow-blue {
+  box-shadow: 0 0 40px rgba(66, 133, 244, 0.15),
+    0 0 80px rgba(66, 133, 244, 0.05);
+}
+
+.glow-purple {
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.15),
+    0 0 80px rgba(168, 85, 247, 0.05);
+}
+
+/* ── Background noise ────────────────────────────────── */
+.bg-noise {
+  position: relative;
+}
+
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Markdown rendered content ───────────────────────── */
+.markdown-content h3 {
+  @apply text-lg font-semibold text-white mt-4 mb-2;
+}
+
+.markdown-content p {
+  @apply text-gray-300 leading-relaxed mb-3;
+}
+
+.markdown-content ul {
+  @apply list-disc list-inside space-y-1.5 mb-3 text-gray-300;
+}
+
+.markdown-content ol {
+  @apply list-decimal list-inside space-y-1.5 mb-3 text-gray-300;
+}
+
+.markdown-content li {
+  @apply leading-relaxed;
+}
+
+.markdown-content strong {
+  @apply text-white font-semibold;
+}
+
+.markdown-content code {
+  @apply bg-gray-800/60 text-blue-400 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.markdown-content blockquote {
+  @apply border-l-2 border-blue-500/50 pl-4 italic text-gray-400 my-3;
+}
+
+/* ── Textarea ────────────────────────────────────────── */
+textarea:focus {
+  outline: none;
+}
+
+/* ── Tab active indicator ────────────────────────────── */
+.tab-active {
+  position: relative;
+}
+
+.tab-active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4285f4, #a855f7);
+  border-radius: 1px;
+}
